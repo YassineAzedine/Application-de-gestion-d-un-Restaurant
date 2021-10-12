@@ -1,6 +1,6 @@
 <?php
 namespace App\Models;
-use App\Models\Servants;
+use App\Models\Servant;
 use App\Models\Table;
 use App\Models\Menu;
 use App\Models\Category;

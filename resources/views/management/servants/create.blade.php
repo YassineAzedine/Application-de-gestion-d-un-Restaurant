@@ -1,4 +1,4 @@
-<form action="{{ route('tables.store') }}" method="POST">
+<form action="{{ route('servants.store') }}" method="POST">
 
 
     @csrf
@@ -8,7 +8,7 @@
          <div class="modal-dialog" role="document">
            <div class="modal-content">
              <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel">Ajouter Table</h5>
+               <h5 class="modal-title" id="exampleModalLabel">Ajouter servants</h5>
                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                  <span aria-hidden="true">&times;</span>
                </button>
@@ -16,16 +16,12 @@
              <div class="modal-body">
            
                <div class="form-groupe">
-                 <input type="text" name="name" id="name" class="form-control" placeholder="Titre" value="">
+                 <input type="text" name="name" id="name" class="form-control" placeholder="name" value="">
                  </div>
+
                  <div class="form-groupe">
-                 <select name="status" id="status" class="form-control">
-                    <option value="" selected disabled>Disponible </option>
-
-                     <option value="1">Oui </option>
-                     <option value="0">Non</option>
-
-                 </select>
+            <input type="text" name="address" id="address" class="form-control" placeholder="address" value="">
+                 
          </div>
              </div>
              <div class="modal-footer">

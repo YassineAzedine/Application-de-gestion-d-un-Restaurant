@@ -26,11 +26,13 @@
 <a class="btn btn-primary " data-toggle="modal" data-target="#ModelCreate">
     <i class="fas fa-plus"></i>
             </a>
-<table class="table table-hover">
+<table class="table table-hover  ">
 <thead>
 <tr>
-<th>Id</th>
+<th class="text-danger">Id</th>
 <th>Titre</th>
+<th>Disponible</th>
+
 <th>Action</th>
 </tr>
 </thead>
@@ -43,9 +45,19 @@
 <td>  
 {{$table->id}}
 </td>
-<td>  
+<td >  
 {{$table->name}}</td>
+<td >  
+@if($table->status)
+<span class="badge text-success"> Oui </span>
+@else
+<span class="badge text-danger"> Non </span>
+@endif
+
+
+    </td>
 <td>  
+    
 
 <a class="btn bg-success table-striped" data-toggle="modal" data-target="#ModelEdit{{$table->id}}">
 <i class="fas fa-edit"></i>

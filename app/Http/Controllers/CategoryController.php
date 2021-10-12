@@ -48,11 +48,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        
         //validation
         $this->validate( $request,[
-            'title'=> 'required|min:3']);
+            'title'=> 'required|min:3',
+            
+        ]);
             //store data
             $title = $request -> title;
+           
 Category::create([
     "title"=>$title,
     "slug"=> Str::Slug($title)
@@ -105,7 +109,7 @@ Category::create([
             
             //store data
             $title = $request -> title;
-$category->update([
+        $category->update([
     "title"=>$title,
     
 

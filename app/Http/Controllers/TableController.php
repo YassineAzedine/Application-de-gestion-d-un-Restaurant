@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Table;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class TableController extends Controller
 {
@@ -33,6 +35,10 @@ class TableController extends Controller
     public function create()
     {
         //
+        return view("management.tables.create")->with([
+      
+             
+        ]);
     }
 
     /**
@@ -43,7 +49,37 @@ class TableController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      
+       
+        //validation
+ 
+        $this->validate( $request,[
+            'name'=> 'required|unique:tables,name',
+            'status'=> 'required|boolean',
+        ]);
+
+   
+        //stor data
+        $name = $request->name;
+        $status = $request->status;
+
+  
+  
+        Table::create([
+            'name'=>$name,
+            'slug'=>Str::Slug($name),
+            'status'=>$status,
+
+            
+          
+
+           
+        ]);
+        
+        return redirect()->route("tables.index")->with([
+            "seccuss" => "tables est modifier avec  success"
+         ]);
+
     }
 
     /**
@@ -66,6 +102,10 @@ class TableController extends Controller
     public function edit(Table $table)
     {
         //
+        return view("management.tables.edit")->with([
+      
+            "tables" => $table
+       ]);
     }
 
     /**
@@ -78,6 +118,33 @@ class TableController extends Controller
     public function update(Request $request, Table $table)
     {
         //
+       
+        
+        $this->validate( $request,[
+            'name'=> 'required|unique:tables,name,'.$table->id,
+            'status'=> 'required|boolean',
+        ]);
+            
+   
+        //stor data
+        $name = $request->name;
+        $status = $request->status;
+        $table->update([
+            'name'=>$name,
+            'slug'=>Str::Slug($name),
+            'status'=>$status,
+
+            
+          
+
+           
+        ]);
+    
+       
+        return redirect()->route("tables.index")->with([
+            "seccuss" => "tables est modifier avec  success"
+         ]);
+
     }
 
     /**
@@ -89,5 +156,9 @@ class TableController extends Controller
     public function destroy(Table $table)
     {
         //
+        $table->delete();
+        return redirect()->route("tables.index")->with([
+            "success" => "table est supprimer avec  success"
+        ]);
     }
 }

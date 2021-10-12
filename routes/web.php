@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TableController;
+use App\Http\Controllers\ServantController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +24,8 @@ Route::get('/', function () {
 Auth::routes(["register"=>false , "reset"=>false]);
 Route::resource('categories', CategoryController::class);
 Route::resource('tables', TableController::class);
+Route::resource('servants', ServantController::class);
+
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
