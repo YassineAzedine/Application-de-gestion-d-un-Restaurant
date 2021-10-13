@@ -48,7 +48,14 @@
 <td>  
 {{$servant->name}}</td>
 <td>  
-    {{$servant->address}}</td>
+    @if($servant->address)
+    {{$servant->address}}
+    @else
+        <span>non disponible</span>
+    
+    @endif
+
+</td>
 <td>  
 
 <a class="btn bg-success table-striped" data-toggle="modal" data-target="#ModelEdit{{$servant->id}}">

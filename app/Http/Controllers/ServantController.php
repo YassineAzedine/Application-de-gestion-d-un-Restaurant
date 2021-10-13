@@ -51,7 +51,7 @@ class servantController extends Controller
           //validation
           $this->validate( $request,[
             'name'=> 'required|min:3',
-            'address'=> 'required|min:3',
+           
 
             
         ]);
@@ -59,10 +59,15 @@ class servantController extends Controller
             $name = $request -> name;
             $address = $request -> address;
 
+          
+
            
 Servant::create([
     "name"=>$name,
-    "address"=> Str::Slug($address)
+    "slug"=> Str::Slug($name),
+    "address"=>$address,
+
+
 ]);
 
        return redirect()->route("servants.index")->with([
@@ -116,13 +121,13 @@ Servant::create([
        
             //store data
             $name = $request->name;
-            $address = $request ->address;
+           
 
           
             $servant->update([
     "name"=>$name,
    
-    "address"=>$address,
+    "address"=>$request ->address,
 
 ]);
 

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TableController;
 use App\Http\Controllers\ServantController;
+use App\Http\Controllers\MenuController;
+
 
 
 /*
@@ -25,6 +27,8 @@ Auth::routes(["register"=>false , "reset"=>false]);
 Route::resource('categories', CategoryController::class);
 Route::resource('tables', TableController::class);
 Route::resource('servants', ServantController::class);
+Route::resource('menus', MenuController::class);
+
 
 
 
